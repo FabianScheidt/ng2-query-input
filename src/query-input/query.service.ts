@@ -22,6 +22,8 @@ export class QueryService {
    */
   public getQueryFromString(categories: Array<QueryCategory>, queryString: string): Query {
     const queryParts: Array<QueryPart> = [];
+
+    // Group comma-separated values in "this, format"
     let remainingQueryString: string = queryString
       .replace( /(:)([^:#$]+[^,])(\s.+:|#|$)/g, '$1"$2" $3');
 
@@ -57,7 +59,6 @@ export class QueryService {
     for (const category of categories.concat([null])) {
       const categoryPart = category ? category.name + this.categoryValueSeparator.trim() + '\\s*' : '';
       const regexStr =  categoryPart + lastPartRegexString;
-      console.log( regexStr );
       const regex = new RegExp(regexStr);
       const match = queryString.trim().match(regex);
 
