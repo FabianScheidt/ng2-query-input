@@ -22,7 +22,8 @@ export class QueryService {
    */
   public getQueryFromString(categories: Array<QueryCategory>, queryString: string): Query {
     const queryParts: Array<QueryPart> = [];
-    let remainingQueryString: string = queryString;
+    let remainingQueryString: string = queryString
+      .replace( /(:)([^:#$]+[^,])(\s.+:|#|$)/g, '$1"$2" $3');
 
     while (true) {
       let lastPart: QueryPart;
@@ -56,6 +57,7 @@ export class QueryService {
     for (const category of categories.concat([null])) {
       const categoryPart = category ? category.name + this.categoryValueSeparator.trim() + '\\s*' : '';
       const regexStr =  categoryPart + lastPartRegexString;
+      console.log( regexStr );
       const regex = new RegExp(regexStr);
       const match = queryString.trim().match(regex);
 
