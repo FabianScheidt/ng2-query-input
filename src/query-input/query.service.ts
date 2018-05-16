@@ -18,7 +18,7 @@ export class QueryService {
    *
    * @param categories
    * @param queryString
-   * @returns {Query}
+   * @returns
    */
   public getQueryFromString(categories: Array<QueryCategory>, queryString: string): Query {
     const queryParts: Array<QueryPart> = [];
@@ -46,7 +46,7 @@ export class QueryService {
    *
    * @param categories
    * @param queryString
-   * @returns {[*,string]}
+   * @returns
    */
   private popLastQueryPartFromString(categories: Array<QueryCategory>, queryString: string): [QueryPart, string] {
 

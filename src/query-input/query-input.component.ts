@@ -25,7 +25,7 @@ export class QueryInputComponent {
   @Output() queryCalled = new EventEmitter();
 
   public suggestionsVisible = false;
-  public selectedSuggestion: number = -1;
+  public selectedSuggestion = -1;
 
   constructor(private queryService: QueryService, private renderer: Renderer) { }
 
@@ -42,7 +42,7 @@ export class QueryInputComponent {
   /**
    * Returns the query-object represented by the current query-string
    *
-   * @returns {Query}
+   * @returns
    */
   getQuery(): Query {
     return this.queryService.getQueryFromString(this.categories, this.queryString);

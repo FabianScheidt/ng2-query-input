@@ -1,6 +1,6 @@
 {
   "name": "ng2-query-input",
-  "version": "1.1.14",
+  "version": "1.1.15",
   "description": "Query-Textfield with Autocompletion for Angular 2+",
   "author": "Fabian Scheidt <fabianscheidt@yahoo.de>",
   "license": "MIT",
@@ -10,10 +10,18 @@
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update --standalone false --gecko false",
-    "e2e": "protractor"
+    "e2e": "protractor",
+    "build": "ng-packagr -p package.json"
   },
-  "main": "ng2-query-input.js",
-  "typings": "ng2-query-input.d.ts",
+  "main": "public_api.ts",
+  "ngPackage": {
+    "lib": {
+      "entryFile": "public_api.ts"
+    },
+    "whitelistedNonPeerDependencies": [
+      "."
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/fabianscheidt/ng2-query-input.git"
@@ -33,15 +41,16 @@
     "zone.js": "^0.8.19",
     "rxjs-compat": "^6.0.0-rc.0"
   },
+  "peerDependencies": {
+    "@angular/core": "^6.0.2",
+    "@angular/common": "^6.0.2",
+    "rxjs": "^6.1.0"
+  },
   "devDependencies": {
-    "@angular/compiler-cli": "^6.0.2",
-    "@angular-devkit/build-ng-packagr": "~0.6.1",
     "@angular-devkit/build-angular": "~0.6.1",
-    "ng-packagr": "^3.0.0-rc.2",
-    "tsickle": ">=0.25.5",
-    "tslib": "^1.7.1",
-    "typescript": "~2.7.2",
+    "@angular-devkit/build-ng-packagr": "~0.6.1",
     "@angular/cli": "6.0.1",
+    "@angular/compiler-cli": "^6.0.2",
     "@angular/language-service": "^6.0.2",
     "@types/jasmine": "~2.8.3",
     "@types/jasminewd2": "~2.0.2",
@@ -55,9 +64,13 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "ng-packagr": "^3.0.0-rc.5",
     "protractor": "~5.1.2",
     "ts-node": "~3.2.0",
-    "tslint": "~5.9.1"
+    "tsickle": ">=0.25.5",
+    "tslib": "^1.7.1",
+    "tslint": "~5.9.1",
+    "typescript": "~2.7.2"
   },
   "contributors": [
     {
