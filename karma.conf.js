@@ -4,13 +4,13 @@
 module.exports = function (config) {
   config.set({
     basePath: '',
-    frameworks: ['jasmine', '@angular/cli'],
+    frameworks: ['jasmine', '@angular-devkit/build-angular'],
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
       require('karma-phantomjs-launcher'),
       require('karma-remap-istanbul'),
-      require('@angular/cli/plugins/karma')
+      require('@angular-devkit/build-angular/plugins/karma')
     ],
     customLaunchers: {
       // chrome setup for travis CI using chromium
@@ -20,16 +20,16 @@ module.exports = function (config) {
       }
     },
     files: [
-      { pattern: './src/test.ts', watched: false }
+      
     ],
     preprocessors: {
-      './src/test.ts': ['@angular/cli']
+      
     },
     mime: {
       'text/x-typescript': ['ts','tsx']
     },
     remapIstanbulReporter: {
-      reports: {
+      dir: require('path').join(__dirname, 'coverage'), reports: {
         html: 'coverage',
         lcovonly: './coverage/coverage.lcov'
       }
