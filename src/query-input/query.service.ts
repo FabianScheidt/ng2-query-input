@@ -22,7 +22,10 @@ export class QueryService {
    */
   public getQueryFromString(categories: Array<QueryCategory>, queryString: string): Query {
     const queryParts: Array<QueryPart> = [];
-    let remainingQueryString: string = queryString;
+
+    // Group comma-separated values in "this, format"
+    let remainingQueryString: string = queryString
+      .replace( /(:)([^:#$]+[^,])(\s.+:|#|$)/g, '$1"$2" $3');
 
     while (true) {
       let lastPart: QueryPart;
