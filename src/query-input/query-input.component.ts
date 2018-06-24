@@ -27,7 +27,7 @@ export class QueryInputComponent {
   public suggestionsVisible = false;
   public selectedSuggestion = -1;
 
-  constructor(private queryService: QueryService, private renderer: Renderer) { }
+  constructor(private queryService: QueryService) { }
 
   get queryString() {
     return this._queryString;
@@ -144,7 +144,9 @@ export class QueryInputComponent {
    */
   public suggestionClick(event: MouseEvent) {
     this.suggestionsVisible = true;
-    this.renderer.invokeElementMethod(this.queryStringInput.nativeElement, 'focus', []);
+    if (this.queryStringInput.nativeElement) {
+      this.queryStringInput.nativeElement.focus();
+    }
     event.stopPropagation();
   }
 
